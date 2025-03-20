@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a[100][100], X, M, N;
+    cin>>X;
+    cin>>M>>N;
+    for(int i = 0; i < M; i++)
+    {
+        for(int j = 0; j < N; j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+
+
+    for (int i = 0; i < M; ++i) {
+        int redSuma = 0;
+
+        
+        for (int j = 0; j < N; ++j) {
+            redSuma += a[i][j];
+        }
+
+        for (int j = 0; j < N; ++j) {
+            if (redSuma > X) {
+                a[i][j] = 1;
+            } else if (redSuma < X) {
+                a[i][j] = -1;
+            } else {
+                a[i][j] = 0;
+            }
+        }
+    }
+
+for(int i = 0; i < M; i++)
+{
+    for(int j = 0; j < N; j++)
+    {
+        cout<<a[i][j]<<" ";
+    }
+    cout<<endl;
+}
+
+
+return 0;   
+}
