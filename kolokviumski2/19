@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstring>
+
+void transformWord(char* word, int shift) {
+    while (*word != '\0') {
+        if ((*word >= 'a' && *word <= 'z') || (*word >= 'A' && *word <= 'Z')) {
+            char base = (*word >= 'a' && *word <= 'z') ? 'a' : 'A';
+            *word = (char)(((int)(*word - base) + shift) % 26 + base);
+        }
+        ++word;
+    }
+}
+
+int main() {
+    int N, X;
+    std::cin >> N >> X;
+
+    std::cin.ignore(); // Consume the newline character after reading N and X
+
+    for (int i = 0; i < N; ++i) {
+        char sentence[80];
+        std::cin.getline(sentence, 80);
+
+        char* word = strtok(sentence, " "); // Tokenize the sentence
+
+        while (word != nullptr) {
+            // Повикај го transformWord за секој збор
+            transformWord(word, X);
+
+            // Отпечати го трансформираниот збор
+            std::cout << word << " ";
+
+            // Продолжи со следниот збор
+            word = strtok(nullptr, " ");
+        }
+
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
