@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void form(int n, int current = 1) {
+    if (current > n) return;
+
+    for (int i = 0; i < n - current + 1; i++) {
+        cout << '*';
+    }
+    cout<<'\n';
+
+    form(n, current + 1);
+}
+
+int main() {
+    int N;
+    cin >> N;
+
+    form(N);
+
+    return 0;
+}
