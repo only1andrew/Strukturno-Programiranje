@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+// Рекурзивна функција за наоѓање на максималната цифра во бројот
+int findMaxDigit(int number) {
+    // Базен случај: кога бројот е еднацифрен
+    if (number < 10) {
+        return number;
+    }
+
+    // Рекурзивно повикување за последната цифра и за останатиот дел од бројот
+    int lastDigit = number % 10;
+    int maxDigitInRest = findMaxDigit(number / 10);
+
+    // Споредба и враќање на поголемата цифра
+    if (lastDigit > maxDigitInRest) {
+        return lastDigit;
+    } else {
+        return maxDigitInRest;
+    }
+}
+
+int main() {
+    int number;
+
+    
+
+    while (std::cin >> number) {
+        // Испечати максималната цифра за секој внесен број
+        int maxDigit = findMaxDigit(number);
+        cout<<maxDigit<<endl;
+    }
+
+    
+
+    return 0;
+}
