@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int a, b, c;
+    int newNumber;
+    cin>>a>>b>>c;
+    newNumber = a * 100 + b * 10 + c;
+
+    cout<<a<<b<<c<<endl;
+    cout<<newNumber - a<<" "<<newNumber - b<<" "<<newNumber - c<<endl;
+    return 0;
+}
