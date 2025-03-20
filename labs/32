@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int Rastechka(int n) {
+    if (n < 10) {
+        return 1;  
+    }
+    int cifra1 = n % 10;
+    int cifra2 = (n / 10) % 10;
+
+    if (cifra1 <= cifra2) {
+        return -1;  
+    }
+    return Rastechka(n / 10);
+}
+int suma(int n) {
+    if (n < 10) {
+        return n;
+    } else {
+        return n % 10 + suma(n / 10);
+    }
+}
+int main() {
+    int a[100], n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        int result = Rastechka(a[i]);
+        if (result == 1) {
+            cout << a[i] << " (" << "suma: "  << suma(a[i]) << ")" << endl;
+        }
+    }
+    return 0;
+}
