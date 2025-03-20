@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+bool isBlagNumber(int num) {
+    // Провери дали секоја цифра на бројот е парна
+    while (num != 0) {
+        int digit = num % 10;
+        if (digit % 2 != 0) {
+            return false;  // Ако било која цифра не е парна, бројот не е благ број
+        }
+        num /= 10;
+    }
+    return true;  // Сите цифри се парни, бројот е благ број
+}
+
+int main() {
+    // Внеси ги границите на опсегот (m и n)
+    int m, n;
+    cin >> m >> n;
+
+    int smallestBlagNumber = -1;  // Иницијализација на најмалиот благ број
+
+    // Провери секој број во опсегот
+    for (int num = m; num <= n; ++num) {
+        if (isBlagNumber(num)) {
+            // Ако бројот е благ број
+            if (smallestBlagNumber == -1 || num < smallestBlagNumber) {
+                smallestBlagNumber = num;  // Зачувај го ако е помал од претходниот најмал благ број
+            }
+        }
+    }
+
+    // Печати резултат
+    if (smallestBlagNumber != -1) {
+        cout <<   smallestBlagNumber << endl;
+    } else {
+        cout << "NE"<< endl;  // Ако не постои благ број, печати NE
+    }
+
+    return 0;
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
