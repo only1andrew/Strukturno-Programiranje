@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int broj;
+    cin>>broj;
+    int godini, meseci, denovi;
+    godini = broj / 365;
+    meseci = (broj % 365) / 30;
+    denovi = (broj % 365) % 30;
+    
+    cout<<"Years: "<<godini<<", months: "<<meseci<<", days: "<<denovi<<endl;
+    
+    
+    return 0;
+}
