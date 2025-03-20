@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+const int MAX_SIZE = 10;  // Assuming a maximum size of 10x10 for the square matrix
+
+void transformMatrix(int n, int matrix[MAX_SIZE][MAX_SIZE]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] < 0) {
+                int sumNeighbors = 0;
+
+                // Sum of horizontal neighbors
+                if (j - 1 >= 0) {
+                    sumNeighbors += matrix[i][j - 1];
+                }
+                if (j + 1 < n) {
+                    sumNeighbors += matrix[i][j + 1];
+                }
+
+                // Sum of vertical neighbors
+                if (i - 1 >= 0) {
+                    sumNeighbors += matrix[i - 1][j];
+                }
+                if (i + 1 < n) {
+                    sumNeighbors += matrix[i + 1][j];
+                }
+
+                // Replace the negative number with the sum of its neighbors
+                matrix[i][j] = sumNeighbors;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+
+    
+    cin >> n;
+
+    
+
+    int matrix[MAX_SIZE][MAX_SIZE];
+
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cin >> matrix[i][j];
+        }
+    }
+
+    
+
+    transformMatrix(n, matrix);
+
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
