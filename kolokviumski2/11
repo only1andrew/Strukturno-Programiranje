@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstring>  // for strlen
+using namespace std;
+
+int main() {
+    char line[101];  // Line buffer, assuming a maximum of 100 characters per line
+
+    while (cin.getline(line, 101) && line[0] != '#') {
+        int length = strlen(line);  // Get the length of the current line
+        char digits[101];           // Buffer to store digits
+        int digitCount = 0;         // Counter for the number of digits
+
+        // Extract digits from the line
+        for (int i = 0; i < length; ++i) {
+            if (line[i] >= '0' && line[i] <= '9') {
+                digits[digitCount++] = line[i];
+            }
+        }
+
+        // Implement bubble sort to sort the digits in ascending order
+        for (int i = 0; i < digitCount - 1; ++i) {
+            for (int j = 0; j < digitCount - i - 1; ++j) {
+                if (digits[j] > digits[j + 1]) {
+                    // Swap the digits
+                    char temp = digits[j];
+                    digits[j] = digits[j + 1];
+                    digits[j + 1] = temp;
+                }
+            }
+        }
+
+        // Output the result
+        cout << digitCount << ":";
+        for (int i = 0; i < digitCount; ++i) {
+            cout << digits[i];
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
