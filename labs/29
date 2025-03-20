@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int findLargestOddDigit(int num, int maxOddDigit = 0) {
+    if (num == 0) {
+        return maxOddDigit;
+    }
+    int currentDigit = num % 10;
+    if (currentDigit % 2 != 0 && currentDigit > maxOddDigit) {
+        maxOddDigit = currentDigit;
+    }
+    return findLargestOddDigit(num / 10, maxOddDigit);
+}
+int main() {
+    int a, b;
+    cin >> a >> b;
+    for (int i = a; i <= b; ++i) {
+        int result = findLargestOddDigit(i);
+        cout << i << " -> ";
+        if (result == 0) {
+            cout << "0";
+        } else {
+            cout << result;
+        }
+        cout << endl;
+    }
+    return 0;
+} 
