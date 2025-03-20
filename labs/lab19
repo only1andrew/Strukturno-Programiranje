@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+const char IGRACh = 'i';
+const char TOPKA = 'o';
+const char GOL = ']';
+const char PRAZNO = '-';
+void pecatiTeren(char teren[100][100], int M, int N) {
+  for (int i = 0; i < M; i++) {
+    for (int j = 0; j < N; j++) {
+      cout << teren[i][j] <<" ";
+    }
+    cout << endl;
+  }
+}
+int main() {
+  int M, N;
+  cin >> M >> N;
+  char teren[100][100];
+  int x_igrac, y_igrac, x_topka, y_topka, x1_gol, y1_gol, x2_gol, y2_gol;
+  cin >> x_igrac >> y_igrac;
+  cin >> x_topka >> y_topka;
+  cin >> x1_gol >> y1_gol >> x2_gol >> y2_gol;
+  for (int i = 0; i < M; i++) {
+    for (int j = 0; j < N; j++) {
+      teren[i][j] = PRAZNO;
+    }
+  }
+  teren[x_igrac][y_igrac] = IGRACh;
+  teren[x_topka][y_topka] = TOPKA;
+  for (int i = x1_gol; i <= x2_gol; i++) {
+    for (int j = y1_gol; j <= y2_gol; j++) {
+      teren[i][j] = GOL;
+    }
+  }
+  pecatiTeren(teren, M, N);
+  int pomestuvanje_x, pomestuvanje_y;
+  cin >> pomestuvanje_x >> pomestuvanje_y;
+  teren[x_topka][y_topka] = PRAZNO;
+  x_topka += pomestuvanje_x;
+  y_topka += pomestuvanje_y;
+  if (x_topka < 0 || x_topka >= M || y_topka < 0 || y_topka >= N) {
+    cout << "OUT!" << endl;
+  } else if (teren[x_topka][y_topka] == GOL) {
+    cout << "GOAL!" << endl;
+  } else {
+    teren[x_topka][y_topka] = TOPKA;
+    cout << "Novata pozicija na topkata e (" << x_topka << ", " << y_topka << ")" << endl;
+    pecatiTeren(teren, M, N);
+  }
+  return 0;
+}
