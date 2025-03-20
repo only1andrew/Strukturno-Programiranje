@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+int specialArray(int a[],int n)
+{
+    int parniPozicii = 0;
+    int neparniPozicii = 0;
+
+    for(int i = 0; i < n; i += 2)
+    {
+        if(a[i] % 2 == 0)
+        {
+            parniPozicii++;
+        }
+    }
+    for(int i = 0; i < n; i += 2)
+    {
+        if(a[i] % 2 != 0)
+        {
+            neparniPozicii++;
+        }
+    }
+    if(parniPozicii >= 0.5 * n && neparniPozicii <= 0.3 * n)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int main()
+{
+
+    int a[100], n;
+    cin>>n;
+
+    for(int i = 0; i < n; i++)
+    {
+        cin>>a[i];
+    }
+
+    cout<<specialArray(a, n)<<endl;
+    return 0;
+}
