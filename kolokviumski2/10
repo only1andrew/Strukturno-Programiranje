@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char z1, z2;
+    char line[81]; // Assuming the maximum line length is 80 characters + 1 for null terminator
+
+    // Read z1 and z2
+    cin >> z1 >> z2;
+    cin.ignore(); // Ignore the newline character after z2
+
+    // Process each line until we encounter '#'
+    while (cin.getline(line, 81) && line[0] != '#') {
+        // Find the positions of z1 and z2
+        char* pos1 = strchr(line, z1);
+        char* pos2 = strchr(pos1 + 1, z2);
+
+        // Ensure both z1 and z2 are found and z1 comes before z2
+        if (pos1 != nullptr && pos2 != nullptr && pos2 > pos1 + 1) {
+            // Print the characters between z1 and z2
+            for (char* p = pos1 + 1; p < pos2; ++p) {
+                cout << *p;
+            }
+            cout << endl;
+        }
+    }
+
+    return 0;
+}
