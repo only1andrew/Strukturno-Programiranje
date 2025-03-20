@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+int main() {
+    
+    int M, N;
+    cin >> M >> N;
+
+    
+    int a[100][100]; 
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    
+    int redCount = 0, kolonaCount = 0;
+
+    
+    for (int i = 0; i < M; i++) {
+        int posledovatelniEdinici = 0;
+        for (int j = 0; j < N; j++) {
+            if (a[i][j] == 1) {
+                posledovatelniEdinici++;
+                if (posledovatelniEdinici >= 3) {
+                    redCount++;
+                    break;  // Break if three consecutive 1s are found in the row
+                }
+            } else {
+                posledovatelniEdinici = 0; // Reset count if a 0 is encountered
+            }
+        }
+    }
+
+   
+    for (int j = 0; j < N; j++) {
+        int posledovatelniEdinici = 0;
+        for (int i = 0; i < M; i++) {
+            if (a[i][j] == 1) {
+                posledovatelniEdinici++;
+                if (posledovatelniEdinici >= 3) {
+                    kolonaCount++;
+                    break;  // Break if three consecutive 1s are found in the column
+                }
+            } else {
+                posledovatelniEdinici = 0; // Reset count if a 0 is encountered
+            }
+        }
+    }
+
+    
+    cout << redCount + kolonaCount << endl;
+    
+
+    return 0;
+}
