@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+int main() {
+    // Внеси природен број n
+    int n;
+    
+    cin >> n;
+
+    // Провери дали внесениот број е валиден
+    if (n <= 0) {
+       
+        return 1; // Заврши програмата со грешка
+    }
+
+    int maxDivisorSum = 0;  // Збир на делителите на најголемиот број
+    int maxDivisorNumber = 0;  // Најголемиот број чиј збир на делителите е најголем
+
+    // Итерирај низ сите броеви помали од n
+    for (int i = 1; i < n; ++i) {
+        int divisorSum = 0;
+
+        // Пресметај збир на делителите на бројот i
+        for (int j = 1; j <= i / 2; ++j) {
+            if (i % j == 0) {
+                divisorSum += j;
+            }
+        }
+
+        // Зачувај го најголемиот збир и соодветниот број
+        if (divisorSum > maxDivisorSum) {
+            maxDivisorSum = divisorSum;
+            maxDivisorNumber = i;
+        }
+    }
+
+    // Печати резултат
+    cout  << maxDivisorNumber << endl;
+   
+
+    return 0;
+}
