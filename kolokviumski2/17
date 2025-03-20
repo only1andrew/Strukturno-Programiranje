@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+// Функција за пресметување на апсолутната вредност
+int absolute(int x) {
+    if (x < 0) {
+        return -x;
+    } else {
+        return x;
+    }
+}
+
+int main() {
+    int m, n;
+    
+    cin >> m >> n;
+    int a[100][100];
+
+    
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cin >> a[i][j];
+        }
+    }
+
+    // Трансформација на матрицата
+    for (int i = 0; i < m; ++i) {
+        int sredina = n / 2;
+        if (n % 2 == 0) {
+            // Парен број на колони
+            int levaSuma = 0;
+            int desnaSuma = 0;
+
+            for (int j = 0; j < sredina; ++j) {
+                levaSuma += a[i][j];
+            }
+
+            for (int j = sredina; j < n; ++j) {
+                desnaSuma += a[i][j];
+            }
+
+            int razlika = absolute(levaSuma - desnaSuma);
+
+            a[i][sredina - 1] = razlika;
+            a[i][sredina] = razlika;
+        } else {
+            // Непарен број на колони
+            int levaSuma = 0;
+            int desnaSuma = 0;
+
+            for (int j = 0; j < sredina; ++j) {
+                levaSuma += a[i][j];
+            }
+
+            for (int j = sredina + 1; j < n; ++j) {
+                desnaSuma += a[i][j];
+            }
+
+            int razlika = absolute(levaSuma - desnaSuma);
+
+            a[i][sredina] = razlika;
+        }
+    }
+
+    // Испечати променетата матрица
+    
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
