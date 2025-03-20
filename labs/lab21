@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    if (n < 1 || n > 100) {
+        return 1;
+    }
+    int matrica[100][100];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> matrica[i][j];
+        }
+    }
+    bool uslovIspolnet = true;
+    for (int i = 0; i < n; i++) {
+        int zbirDesno = 0;
+        for (int j = 0; j < n; j++) {
+            if (j != i) {
+                 uslovIspolnet = false;
+                zbirDesno += matrica[i][j];
+            }
+        }
+        
+        if (matrica[i][i] == zbirDesno) {
+            uslovIspolnet = true;
+            break;
+        }
+    }
+    if (uslovIspolnet) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cout << matrica[i][j] << " ";
+            }
+            cout << endl;
+        }
+    } else {
+        cout << "-1" << endl;
+    }
+    return 0;
+}
