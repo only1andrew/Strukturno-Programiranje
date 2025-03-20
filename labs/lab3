@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    int evenSum = 0; // Сума на цифри на парни позиции
+    int oddSum = 0;  // Сума на цифри на непарни позиции
+
+    // Вчитување на петцифрениот број
+    
+    cin >> number;
+
+    // Пресметка на сумата на цифрите на парни и непарни позиции
+    for (int i = 0; i < 5; i++) {
+        int digit = number % 10; // Земање на последната цифра
+        number /= 10; // Отстранување на последната цифра
+
+        // Додавање на цифрата во соодветната сума во зависност од позицијата
+        if (i % 2 == 0) {
+            oddSum += digit;
+        } else {
+            evenSum += digit;
+        }
+    }
+
+    // Прикажување на резултатот
+    cout << "Sumata na cifrite na parnite pozicii e " << oddSum << endl;
+    cout << "Sumata na cifrite na neparnite pozicii e " << evenSum << endl;
+
+    return 0;
+}
