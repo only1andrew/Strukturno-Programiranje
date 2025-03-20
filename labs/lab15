@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int MAX = 100;
+    int a[MAX];
+
+    // Reading numbers until -1 is encountered
+    int N;
+    int index = 0;
+    while (true) {
+        std::cin >> N;
+        if (N == -1) {
+            break;
+        }
+        a[index++] = N;
+    }
+
+    // Processing tuples and modifying the array
+    while (cin >> N) {
+        int L, R, V, I;
+        L = N;
+        cin >> R >> V >> I;
+
+        if (I == 0) {
+            // Adding value V to the range [L, R]
+            for (int i = L; i <= R; ++i) {
+                a[i] += V;
+            }
+        } else if (I == 1) {
+            // Adding value V to the range (L, R)
+            for (int i = L + 1; i < R; ++i) {
+                a[i] += V;
+            }
+        }
+    }
+
+    // Printing the final array
+    for (int i = 0; i < index; ++i) {
+        cout << a[i] << " ";
+    }
+    cout << std::endl;
+
+    return 0;
+}
