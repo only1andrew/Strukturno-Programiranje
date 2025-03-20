@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int a, b;
+    cin>>a;
+    cin>>b;
+    int kvadrat;
+    double plostina;
+    kvadrat = a*a + b*b;
+    plostina = 0.5 * a * b;
+    cout<<kvadrat<<endl;
+    cout<<plostina<<endl;
+    return 0;
+}
