@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a, b;
+    cin>>a;
+    cin>>b;
+    int sredna_vrednost;
+    sredna_vrednost = (a + b) / 2;
+    a += sredna_vrednost;
+    b -= sredna_vrednost;
+    int razlika;
+    razlika = a - b;
+    cout<<"Razlikata e: "<<razlika<<endl;
+    
+    
+    
+    return 0;
+}
