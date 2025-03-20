@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+char *findFirst(char a[]) {
+    for (int i = 0; i < strlen(a); i++) {
+        if (isdigit(a[i])) {
+            return &a[i];
+        }
+    }
+    return nullptr;
+}
+
+char *findLast(char a[]) {
+    for (int i = strlen(a) - 1; i >= 0; i--) {
+        if (isdigit(a[i])) {
+            return &a[i];
+        }
+    }
+    return nullptr;
+}
+
+int main() {
+    char a[100], result[100];
+    int biggest = 0;
+
+    while (true) {
+        cin.getline(a, 100);
+
+        if (strchr(a, '0') != nullptr) {
+            break;
+        }
+
+        char *first = findFirst(a);
+        char *last = findLast(a);
+
+        if (last != nullptr && first != nullptr) {
+            int currentLength = last - first + 1;
+            if (currentLength >= biggest){
+                biggest = currentLength;
+                strncpy(result, first, currentLength);
+                result[currentLength] = '\0';
+            }
+        }
+    }
+    cout << result;
+    return 0;
+}
