@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int cetiricifren, trocifren;
+    cin>>cetiricifren;
+    cin>>trocifren;
+    int zbir3 = trocifren / 100 + trocifren % 10;
+    int zbir4 = (cetiricifren / 100) % 10 + cetiricifren % 10;
+    int aritmetickasredina = (zbir3 + zbir4) / 4;
+    cout<<aritmetickasredina;
+
+    return 0;
+}
