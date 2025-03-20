@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+void bubbleSort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                // Замена на елементите ако се во погрешен редослед
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n, k;
+
+    // Внеси големината на низата и бројот на најмалите елементи
+    cin >> n >> k;
+
+    // Внеси ги елементите на низата
+    int a[100];
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    // Изврши сопствениот метод за сортирање (bubble sort)
+    bubbleSort(a, n);
+
+    // Печати ги најмалите k елементи
+    cout<<k<<"-te najmali elementi se: ";
+    for (int i = 0; i < k; i++) {
+        cout << a[i] << " ";
+    }
+
+    return 0;
+}
+
+//Function Signature: void bubbleSort(int array[], int size): This declares a function named bubbleSort that takes an array (array) and its size (size) as parameters. The function does not return anything (void).
+
+//Outer Loop (i): for (int i = 0; i < size - 1; i++): This loop iterates over the array from the beginning to the second-to-last element. The variable i represents the number of iterations, and its purpose is to iterate through the array until the largest elements are bubbled to the end.
+
+//Inner Loop (j): for (int j = 0; j < size - i - 1; j++): This inner loop iterates over the unsorted part of the array. The variable j represents the index of an element within the unsorted part of the array.
+
+//Comparison and Swap: if (array[j] > array[j + 1]) { ... }: This condition checks if the current element is greater than the next element. If true, it means the elements are in the wrong order, and they need to be swapped.
+
+//Swapping: The lines inside the if block perform the swap. It uses a temporary variable (temp) to store the value of array[j], then assigns array[j + 1] to array[j] and finally assigns the value stored in temp to array[j + 1]. This effectively swaps the values of array[j] and array[j + 1].
+
+//The entire function is the implementation of the Bubble Sort algorithm, a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The process is repeated until the list is sorted.
