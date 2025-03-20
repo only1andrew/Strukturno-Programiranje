@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int ocenka1, ocenka2, ocenka3, ocenka4, ocenka5, zbir;
+    float prosek;
+    cin>>ocenka1>>ocenka2>>ocenka3>>ocenka4>>ocenka5;
+    prosek = (ocenka1 + ocenka2 + ocenka3 + ocenka4 + ocenka5) / 5.0;
+    cout<<"Average grade: "<<prosek<<endl;
+    
+    
+    
+}
