@@ -1,0 +1,48 @@
+#include <iostream>
+
+int main() {
+    int n;
+    std::cin >> n;
+
+    int matrix[100][100];
+
+    // Read matrix elements
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            std::cin >> matrix[i][j];
+        }
+    }
+
+    // Transform matrix
+    for (int i = 0; i < n; ++i) {
+        double sum = 0;
+        int count = 0;
+
+        // Calculate the average of elements left of the secondary diagonal
+        for (int j = 0; j < n - i - 1; ++j) {
+            sum += matrix[i][j];
+            count++;
+        }
+
+        double average = count > 0 ? sum / count : 0;
+
+        // Replace elements right of the secondary diagonal that are smaller than the average
+        for (int j = n - i; j < n; ++j) {
+            if (matrix[i][j] < average) {
+                matrix[i][j] = -1;
+            }
+        }
+    }
+
+    // Print transformed matrix
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
+
+
