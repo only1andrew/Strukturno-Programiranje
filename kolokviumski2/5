@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    int amount;
+    std::cin >> amount;
+
+    char maxType[10] = "";  // Initialize with an empty string
+    int maxBetType;
+    double maxCoefficient = 0.0;
+
+    char code[10];
+    int betType;
+    double coefficient;
+
+    while (std::cin >> code >> betType >> coefficient) {
+        if (coefficient > maxCoefficient) {
+            // Use a simple assignment to copy the code
+            for (int i = 0; i < 10; ++i) {
+                maxType[i] = code[i];
+            }
+
+            maxBetType = betType;
+            maxCoefficient = coefficient;
+        }
+    }
+
+    // Print the result without using std::string
+    int dobivka = amount * maxCoefficient;
+    std::cout << maxType << " " << maxBetType << " " << maxCoefficient << std::endl;
+    cout<<dobivka<<endl;
+
+
+
+    return 0;
+}
