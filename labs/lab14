@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+void mergeArrays(int arr1[], int M, int arr2[], int N, int result[]) {
+    int i = 0, j = 0, k = 0;
+
+    // Merge the two arrays in ascending order
+    while (i < M && j < N)  {//dodeka ne stigne i ili j do krajot na nizata(n ili m)
+        if (arr1[i] < arr2[j]) {
+            result[k++] = arr1[i++];
+        } else {
+            result[k++] = arr2[j++];
+        }
+    }
+
+    // Add the remaining elements from the first array (if any)
+    while (i < M) {
+        result[k++] = arr1[i++];
+    }
+
+    // Add the remaining elements from the second array (if any)
+    while (j < N) {
+        result[k++] = arr2[j++];
+    }
+}
+
+int main() {
+    // Input for the first array
+    
+    int M;
+    cin >> M;
+
+    int arr1[M];
+    
+    for (int i = 0; i < M; i++) {
+        cin >> arr1[i];
+    }
+
+    // Input for the second array
+    
+    int N;
+    cin >> N;
+
+    int arr2[N];
+    
+    for (int i = 0; i < N; i++) {
+        cin >> arr2[i];
+    }
+
+    // Calculate the length of the result array
+    int lenResult = M + N;
+
+    // Create the result array
+    int result[lenResult];
+
+    // Call the function to merge the arrays
+    mergeArrays(arr1, M, arr2, N, result);
+
+    // Print the result
+    
+    for (int i = 0; i < lenResult; i++) {
+        cout << result[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
