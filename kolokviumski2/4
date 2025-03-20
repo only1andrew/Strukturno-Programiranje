@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n,m,sumIV=0,sumII=0,sumI=0,sumIII=0;
+    cin>>n>>m;
+    int a[n][m];
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin>>a[i][j];
+        }
+    }
+    int red,kol;
+    cin>>red>>kol;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            
+            if (i<red && j>=kol)
+	        {
+              sumI+=a[i][j];
+            }
+            else if (i<red && j<kol)
+	        {
+              sumII+=a[i][j];
+            }
+            else if (i>=red && j<kol)
+	        {
+              sumIII+=a[i][j];
+            }
+            else if (i>=red && j>=kol)
+	        {
+              sumIV+=a[i][j];
+            }
+           }
+          }
+    cout<<sumI<<" "<<sumII<<" "<<sumIII<<" "<<sumIV<<endl;
+
+    return 0;
+}
