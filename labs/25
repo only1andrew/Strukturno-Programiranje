@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m, n;
+
+    // Внеси големината на матрицата
+    cin >> m;
+    cin >> n;
+
+    int matrix[100][100];
+
+    // Внеси елементите на матрицата
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    // Мин-макс нормализација за секоја колона
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int minVal = matrix[0][j];
+            int maxVal = matrix[0][j];
+
+            // Пронајди минимум и максимум за секоја колона
+            for (int k = 1; k < m; k++) {
+                if (matrix[k][j] < minVal) {
+                    minVal = matrix[k][j];
+                }
+                if (matrix[k][j] > maxVal) {
+                    maxVal = matrix[k][j];
+                }
+            }
+
+            // Трансформација на секој елемент во колоната
+            double normalizedValue = (double)(matrix[i][j] - minVal) / (maxVal - minVal);
+
+            // Manual formatting without iomanip
+            cout.precision(2);
+            cout << fixed << normalizedValue;
+
+            if (j < n - 1) {
+                cout << " ";
+            }
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
