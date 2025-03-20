@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+    int broj;
+    cin>>broj;
+    bool ediniciParenBroj;
+    int stotki, desetki, edinici;
+    stotki = broj / 100;
+    desetki = (broj / 10) % 10;
+    edinici = broj % 10;
+    cout<<"Vrednosta na stotki, "<<"desetki i "<<"edinici e: "<<stotki<<","<<desetki<<","<<edinici<<endl;
+    if(edinici % 2 == 0)
+    {
+        ediniciParenBroj = true;
+        cout<<"Vredonsta na promenlivata ediniciParenBroj e "<<1<<endl;
+    }
+    else
+    {
+        cout<<"Vredonsta na promenlivata ediniciParenBroj e "<<0<<endl;
+    }
+    return 0;
+}
