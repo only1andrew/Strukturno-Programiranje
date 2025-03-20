@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+const int MAX_NUMBERS = 100;
+
+// Рекурзивна функција за порамнување на број
+int poramnet(int a) {
+    if (a == 0) {
+        return 0;
+    }
+
+    int lastDigit = a % 10;
+    int rest = poramnet(a / 10);
+
+    // Замена на цифрата 9 со 7
+    if (lastDigit == 9) {
+        return rest * 10 + 7;
+    } else {
+        return rest * 10 + lastDigit;
+    }
+}
+
+// Рачна имплементација на сортирање (Bubble sort)
+void customSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (arr[j] > arr[j + 1]) {
+                // Замена на елементите ако се во неправилен ред
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int numbers[MAX_NUMBERS];
+    int input, count = 0;
+
+    
+
+    // Читање на броеви од стандарден влез
+    while (cin >> input && count < MAX_NUMBERS) {
+        numbers[count++] = input;
+    }
+
+    // Процесирање и печатење на порамнувањата
+    
+    int poramnetaNumbers[MAX_NUMBERS];
+
+    for (int i = 0; i < count; ++i) {
+        poramnetaNumbers[i] = poramnet(numbers[i]);
+    }
+
+    // Сортирање на порамнетите броеви (потребна е ваша имплементација)
+    customSort(poramnetaNumbers, count);
+
+    int printCount = std::min(5, count);
+
+    for (int i = 0; i < printCount; ++i) {
+        cout << poramnetaNumbers[i] << " ";
+    }
+
+    return 0;
+}
+
