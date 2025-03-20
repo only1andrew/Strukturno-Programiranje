@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main() {
+    const int MAX = 100;  // Максимална големина на низата
+    int a[MAX];     // Низа за чување на броевите
+    int n = 0;              // Големина на низата
+
+    // Вчитување на броеви сè додека се внесуваат цели броеви
+    while (n < MAX && cin >> a[n]) {
+        n++;
+    }
+
+    // Трансформација на низата според барањето
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i] == a[j]) {
+                a[j] += (j - i);
+            }
+        }
+    }
+
+    // Печатење на трансформираната низа
+    
+    for (int i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+
+    return 0;
+}
+//Outer Loop (i): for (int i = 0; i < size; i++): This loop iterates over each element in the array (numbers). The variable i represents the index of the current element.
+
+//Inner Loop (j): for (int j = i + 1; j < size; j++): This inner loop iterates over the elements that come after the current element (at index i). The variable j represents the index of the element being compared.
+
+//Comparison: if (numbers[i] == numbers[j]) { ... }: This condition checks if the current element at index i is equal to the element at index j.
+
+//Transformation: numbers[j] += (j - i);: If the elements at indices i and j are equal, the element at index j is increased by the difference in positions between j and i. This transformation is done to meet the requirement of increasing the elements that are equal to the current element by the difference in their positions.
+
+//In summary, these nested loops iterate over each pair of elements in the array, and if they are equal, the element at the later position is increased by the difference in their indices. This process effectively implements the described transformation for the array.
