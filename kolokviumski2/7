@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    
+    int m, n;
+    cin >> m >> n;
+
+    
+    int a[100][100]; 
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    
+    int niza[100]; 
+
+    for (int i = 0; i < m; i++) {
+        // Пресметај аритметичка средина за моменталната редица
+        double redAS = 0.0;
+        for (int j = 0; j < n; j++) {
+            redAS += a[i][j];
+        }
+        redAS /= n;
+
+        // Пронајди елементот во редицата што е најоддалечен од аритметичката средина
+        int najdalecenEl = a[i][0];
+        double minRastojanie = abs(a[i][0] - redAS);
+
+        for (int j = 1; j < n; j++) {
+            double rastojanie = abs(a[i][j] - redAS);
+            if (rastojanie > minRastojanie) {
+                minRastojanie = rastojanie;
+                najdalecenEl = a[i][j];
+            }
+        }
+
+        // Запиши го најоддалечениот елемент во низата
+        niza[i] = najdalecenEl;
+    }
+
+    // Отпечати ја генерираната низа
+    
+    for (int i = 0; i < m; i++) {
+        cout << niza[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
